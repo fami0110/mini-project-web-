@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Belanja</title>
+</head>
+<body>
+  <h1 style="margin-bottom: -8px;">Selamat datang di Indimirit Silimit Birbilinji:D</h1>
+  <p>Diskon 10% jika belanja sebesar Rp 300000 atau lebih.</p>
+  <br>
+  <label for="input">Belanja :</label>
+  <input id="input" type="number">
+  <p id="output"></p>
+
+  <script>
+    const input = document.getElementById('input');
+    const output = document.getElementById('output');
+
+    let besarDiskon = 0;
+    let jmlPembayaran = 0;
+
+    input.addEventListener('change', () => {
+      let belanja = parseInt(input.value);
+
+      if (belanja >= 300000) {
+        alert('Kamu mendapatkan diskon sebesar 10%');
+        besarDiskon = belanja * 0.1;
+        jmlPembayaran = belanja - besarDiskon;
+      } else {
+        alert('Maaf kamu tidak mendapatkan diskon')
+        jmlPembayaran = belanja;
+      }
+
+      output.innerHTML = `Besar diskon : ${besarDiskon} <br>Jumlah pembayaran : ${jmlPembayaran}`;
+    })
+  </script>
+  
+</body>
+</html>

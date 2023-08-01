@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Login</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+      /* outline: 1px solid red; */
+    }
+    body {
+      min-height: 100vh;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    fieldset {
+      width: fit-content;
+      padding: 1rem;
+      border: 3px solid orangered;
+    }
+    legend {
+      padding: 8px 12px;
+      background-color: orangered;
+      color: white;
+      font-weight: bold;
+    }
+    label {
+      margin-bottom: 8px;
+      display: inline-block;
+      position: relative;
+      width: 80px;
+    }
+    label::after {
+      content: ":";
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+    #submit {
+      margin-top: 8px;
+      padding: 8px 12px;
+      background-color: orangered;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      transition: background-color 0.3s ease;
+    }
+    #submit:hover {
+      background-color: #dc3b00;
+    }
+  </style>
+</head>
+<body>
+  <fieldset>
+    <legend>Login</legend>
+    <label for="nama">Nama</label>
+    <input id="nama" type="text">
+    <br>
+    <label for="password">Password</label>
+    <input id="password" type="password">
+    <br>
+    <button id="submit">Submit</button>
+  </fieldset>
+
+  <script>
+    const submit = document.getElementById('submit');
+
+    submit.addEventListener('click', () => {
+      let nama = document.getElementById('nama').value;
+      let password = document.getElementById('password').value;
+
+      if (nama == 'Sambo') {
+        if (password == '123') {
+          alert(`Selamat datang ${nama}!`);
+          document.body.innerHTML = '<h1>Anda sudah login<h1>';
+        } else {
+          alert('Password salah!');
+        }
+      } else {
+        alert('Akun tidak terdaftar!');
+      }
+    })
+  </script>
+</body>
+</html>
