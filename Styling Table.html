@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<head>
+	<title>Styling Table</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		body {
+			height: 100vh;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		table {
+			border-collapse: collapse;
+			background-color: gainsboro;
+		}
+		table th {
+			min-width: 100px;
+			padding: 8px 16px;
+			background-color: rgb(41, 41, 255);
+			color: white;
+			border-bottom: 4px solid blue;
+		}
+		table td {
+			padding: 8px;
+		}
+	</style>
+</head>
+<body>
+	<table>
+		<thead>
+			<tr>
+				<th>Nama Komputer</th>
+				<th>Prossesor</th>
+				<th>RAM</th>
+				<th>Sistem Operasi</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Clnt-1</td>
+				<td>IP 4 1,8 Ghz</td>
+				<td>10 GB</td>
+				<td>Redhat Linux</td>
+			</tr>
+			<tr>
+				<td>Clnt-2</td>
+				<td>IP 2 Ghz C</td>
+				<td>6 GB</td>
+				<td>Mandrake Linux</td>
+			</tr>
+			<tr>
+				<td>Clnt-3</td>
+				<td>XP 2000+</td>
+				<td>20 GB</td>
+				<td>Windows</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<head>
+  <title>Form 1</title>
+	<style>
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+		/* outline: 1px solid red; */
+	}
+
+	.center {
+		height: 100vh;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	form {
+		min-width: 500px;
+	}
+
+	fieldset {
+		padding: 20px 8px 8px;
+		background-color: #f1f1f1;
+	}
+
+	legend {
+		padding: 8px;
+		background-color: #fca218;
+		color: white;
+	}
+
+	label {
+		display: inline-block;
+		width: 75px;
+		margin-bottom: 20px;
+		text-align: end;
+	}
+
+	input[type="submit"] {
+		margin-right: 4px;
+		padding: 6px 12px;
+		background-color: #fca218;
+		color: white;
+		border: none;
+	}
+
+	input[type="submit"]:hover {
+		background-color: #e18c0b;
+	}
+	</style>
+</head>
+<body>
+  <article class="center">
+    <form action="" method="post" target="_blank">
+      <fieldset>
+        <legend>Pekerjaan</legend>
+        <label for="nama">Nama :</label>
+        <input type="text" id="nama" name="nama">
+        <br>
+        <label for="ktp">KTP :</label>
+        <input type="text" id="ktp" name="ktp">
+        <br>
+        <label for="kelamin">Kelamin :</label>
+        <select id="kelamin" name="kelamin">
+          <option value="laki-laki">Laki-laki</option>
+          <option value="perempuan">Perempuan</option>
+        </select>
+        <br>
+        <label for="tempat">TTL :</label>
+        <input type="text" id="tempat" name="tempat">
+        <input type="date" id="tanggal" name="tanggal">
+        <br>
+        <label for="agama">Agama :</label>
+        <select id="agama" name="agama">
+          <option value="islam">Islam</option>
+          <option value="kristen">Kristen</option>
+          <option value="katolik">Katolik</option>
+          <option value="hindu">Hindu</option>
+          <option value="budha">Budha</option>
+          <option value="konghucu">Konghucu</option>
+        </select>
+        <br>
+        <label for="status">Status :</label>
+        <select id="status" name="status">
+          <option value="kawin">Kawin</option>
+          <option value="belum kawin">Belum Kawin</option>
+        </select>
+        <br>
+        <input type="submit" value="Browse">
+        <input type="submit" value="Simpan">
+      </fieldset>
+    </form>
+  </article>
+</body>
+</html>

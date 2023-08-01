@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Membaca Bilangan</title>
+  <style>
+    #output {
+      position: relative;
+      top: 8px;
+      background-color: gainsboro;
+      margin-top: 1rem;
+      padding: 2px;
+    }
+  </style>
+</head>
+<body">
+  <h1>Membaca Bilangan</h1>
+  <br>
+  <label for="input">Input :</label>
+  <input id="input" type="number">
+  <br>
+  <code id="output"></code>
+
+  <script>
+    const input = document.getElementById('input');
+    const output = document.getElementById('output');
+
+    const arrSatuan = ['satu ', 'dua ', 'tiga ', 'empat ', 'lima ', 'enam ', 'tujuh ', 'delapan ', 'sembilan '];
+    const arrBelasan = ['sepuluh ', 'sebelas ', 'dua belas ', 'tiga belas ', 'empat belas ', 'lima belas ', 'enam belas ', 'tujuh belas ', 'delapan belas ', 'sembilan belas '];
+    
+    function bacaBilangan(input) {
+      let ejaan = [];
+      // Split karakter menjadi array dan parse ke integer
+      input = input.split('');
+      let number = input.map(n => parseInt(n));
+
+      // Mengelompokkan angka menjadi tiga-tiga
+      let arrNum = [];
+      let index = number.length-1;
+      while (index >= 0) {
+        let temp = [];
+        for (let j = 0; j < 3; j++) {
+          if (index >= 0) {
+            temp.unshift(number[index]);
+            index--;
+          } else {
+            temp.unshift(0);
+          }
+        }
+        arrNum.unshift(temp);
+      }
+
+      console.log(arrNum) // Menampilkan hasil array dari inputan 
+
+      // Membuat loop dari array yang sudah dihasilkan
+      for (let i = 0; i < arrNum.length; i++) {
+        // Inisialisasi variabel untuk ratusan, puluhan, dan satuan
+        let [ratusan, puluhan, satuan] = [arrNum[i][0], arrNum[i][1], arrNum[i][2]];
+        let belasan = false;
+
+        // Identifikasi apakah index arrNum ribuan, jutaan, miliaran, atau triliunan
+        let layer3 = (arrNum.length-(i+1)) > 4 ? (arrNum.length-(i+2)) % 4 + 1 : (arrNum.length-(i+1));
+
+        // Menambah ejaan ratusan
+        if (ratusan != 0) {
+          if (ratusan == 1) {
+            ejaan.push(`seratus `);
+          } else {
+            ejaan.push(`${arrSatuan[ratusan-1]}ratus `);
+          }
+        }
+
+        // Menambah ejaan puluhan/belasan
+        if (puluhan != 0) {
+          if (puluhan == 1) {
+            ejaan.push(arrBelasan[satuan]);
+            belasan = true;
+          } else {
+            ejaan.push(`${arrSatuan[puluhan-1]}puluh `);
+          }
+        }
+        
+        // Menambah ejaan satuan
+        if (satuan != 0 && !belasan) {
+          if (layer3 == 1 && (puluhan + ratusan) == 0 && satuan == 1) {
+            ejaan.push(`se`); // untuk kata 'seribu'
+          } else {
+            ejaan.push(arrSatuan[satuan-1]);
+          }
+        }
+
+        // Menambah ejaan ribuan, jutaan, triliunan
+        switch (layer3) {
+          case 1: 
+            if (arrNum[i].reduce((acc, currentval) => acc + currentval, 0) != 0) {ejaan.push('ribu ');}
+            break;
+          case 2:
+            if (arrNum[i].reduce((acc, currentval) => acc + currentval, 0) != 0) {ejaan.push('juta ');}
+            break;
+          case 3:
+            if (arrNum[i].reduce((acc, currentval) => acc + currentval, 0) != 0) {ejaan.push('miliar ');}
+            break;
+          case 4:
+            ejaan.push('triliun ');
+            break;
+        }
+      }
+
+      // Mengembalikan ejaan yang sudah disusun
+      return ejaan.join('');
+    }
+
+    // Input event
+    input.addEventListener('input', () => {
+      let value = input.value;
+
+      console.clear();
+      output.innerHTML = bacaBilangan(value);
+    })
+  </script>
+  
+</body>
+</html>

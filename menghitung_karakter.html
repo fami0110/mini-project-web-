@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jumlah Karakter</title>
+</head>
+<body">
+  <h1>Menghitung Jumlah Karakter, Kata, dan Kalimat</h1>
+  <br>
+  <label for="input" style="display: block;">Input :</label>
+  <textarea id="input" cols="75" rows="8" style="resize: none;">Ini adalah contoh text.</textarea>
+  <p id="output">Jumlah Kalimat = 1 <br>Jumlah Kata = 4 <br>Jumlah Karakter = 19</p>
+
+  <script>
+    const input = document.getElementById('input');
+    const output = document.getElementById('output');
+    
+    function hitungJumlahKalimat(strings) {
+      let kalimat = [strings];
+      if (strings.includes('.')) {
+        kalimat = strings.split('.');
+        kalimat.pop();
+      }
+      for (let i = kalimat.length-1; i >= 0; i--) {
+        if (kalimat[i] === '') {kalimat.splice(i, 1);}
+      }
+      return kalimat.length;
+    }
+
+    function hitungJumlahKata(strings) {
+      let kata = strings.split(' ');
+      for (let i = kata.length-1; i >= 0; i--) {
+        if (kata[i] === '') {kata.splice(i, 1);}
+      }
+      return kata.length;
+    }
+
+    function hitungJumlahKarakter(strings) {
+      let karakter = strings.split('');
+      let filter = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'.split('');
+      for (let i = karakter.length-1; i >= 0; i--) {
+        let hapus = true;
+        for (let j = 0; j < filter.length; j++) {
+          if (karakter[i] == filter[j]) {hapus = false; break;}
+        }
+        hapus == true ? karakter.splice(i, 1) : 'not deleted';
+      }
+      return karakter.length;
+    }
+    
+    let jmlKalimat = hitungJumlahKalimat(input.value);
+    let jmlKata = hitungJumlahKata(input.value);
+    let jmlKarakter = hitungJumlahKarakter(input.value);
+
+    input.addEventListener('input', () => {
+      let value = input.value;
+      
+      jmlKalimat = hitungJumlahKalimat(value);
+      jmlKata = hitungJumlahKata(value);
+      jmlKarakter = hitungJumlahKarakter(value);
+
+      output.innerHTML = `Jumlah Kalimat = ${jmlKalimat} <br>Jumlah Kata = ${jmlKata} <br>Jumlah Karakter = ${jmlKarakter}`;
+    })
+  </script>
+  
+</body>
+</html>

@@ -1,0 +1,210 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  /* outline: 1px solid red; */
+}
+
+:root {
+  --bgColor1: #a0cbff;
+  --bgColor2: #eaeaea;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(90deg, #49ccff, #4090f0);
+}
+
+/* css form */
+
+.container {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+form {
+  min-width: fit-content;
+  padding: 1rem;
+  background-color: var(--bgColor1);
+  border-radius: 1rem;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.25);
+}
+
+h1 {
+  margin: 1rem;
+  text-align: center;
+  color: #1d1d1d;
+}
+
+.nama {
+  width: 185px;
+}
+
+input, select {
+  height: 36px;
+  padding: 8px;
+  border: none;
+  border-radius: 4px;
+}
+
+input[type="radio"], input[type="checkbox"] {
+  transform: translateY(3px);
+  height: 16px;
+  accent-color: purple;
+}
+
+input[type="checkbox"]:focus-visible {
+  outline: none;
+  border: none;
+}
+
+:is(input[type="text"], input[type="tel"], input[type="password"]):focus {
+  outline: none;
+  border: none;
+  box-shadow: inset 0 0 0 1px purple;
+}
+
+label {
+  font-size: 14px;
+}
+
+label.fill {
+  display: inline-block;
+  padding: 10px 1rem;
+  background-color: var(--bgColor2);
+}
+
+#nama-pengguna {
+  width: 260px;
+  margin-top: 1rem;
+}
+
+#akun {
+  margin-left: -8px;
+  background-color: var(--bgColor2);
+  border-radius: 0 4px 4px 0;
+}
+
+#password {
+  width: 266px;
+  margin-top: 1rem;
+}
+
+.show {
+  padding-left: 2rem !important;
+  margin-left: -1.6rem;
+  border-radius: 0 4px 4px 0;
+}
+
+.country {
+  margin-right: -8px;
+  background-color: var(--bgColor2);
+  margin: 1rem 0;
+}
+
+#pnumber {
+  width: 308px;
+}
+
+.ttl-container {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  width: fit-content;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+}
+
+.ttl {
+  border: 3px solid var(--bgColor2);
+  border-left: none;
+  border-radius: 0;
+}
+
+.ttl:nth-of-type(2) {
+  width: 130px;
+}
+
+#hubungan {
+  width: 120px;
+}
+
+p {
+  font-size: 12px;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  padding: 10px 16px;
+  background-color: purple;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  margin-top: 8px;
+  transition: background-color 0.2s ease-out;
+}
+
+button:hover {
+  background-color: #a000a0;
+}
+
+/* css waves */
+
+section.waves {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 30%;
+  background: white;
+  z-index: -9;
+}
+
+.wave {
+  position: absolute;
+  bottom: 100%;
+  width: inherit;
+  height: 100px;
+  background: url(http://drive.google.com/uc?export=view&id=1GkEwEyjtIeG_K5i9QLgBeZN3p-VmIN1C), url(wave.png);
+  background-size: 1000px 100px;
+}
+
+.wave:nth-child(1) {
+  opacity: 1;
+  animation: waving 30s linear infinite;
+}
+
+.wave:nth-child(2) {
+  opacity: 0.5;
+  animation: waving 14s linear infinite reverse;
+  bottom: calc(100% + 8px);
+}
+
+.wave:nth-child(3) {
+  opacity: 0.5;
+  animation: waving 16s linear infinite;
+  bottom: calc(100% + 16px);
+}
+.wave:nth-child(4) {
+  opacity: 0.3;
+  animation: waving 4s linear infinite reverse;
+  bottom: calc(100% + 12px);
+}
+
+@keyframes waving {
+  from {
+    background-position-x: 0;
+  }
+  to {
+    background-position-x: 1000px;
+  }
+}
